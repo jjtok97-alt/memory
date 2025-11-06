@@ -186,32 +186,29 @@
       createBoard();
     }
     
-function checkWin() {
-  const flippedCards = document.querySelectorAll('.memory-card.flip');
-  if (flippedCards.length === icons.length * 2) {
-    setTimeout(() => {
-      // Ukryj planszę
-      gameContainer.style.display = 'none';
-
-      // Stwórz napis w body
-      const winMessage = document.createElement('div');
-      winMessage.classList.add('win-message');
-      winMessage.innerHTML = `
-        🎉 Gratulacje! 🎉<br>
-        Wygrałeś grę memory!<br>
-        🔄 Kliknij "Nowa gra", aby spróbować ponownie.
-      `;
-      document.body.appendChild(winMessage);
-    }, 500);
-  }
-}
-
+ function checkWin() {
+      const flippedCards = document.querySelectorAll('.memory-card.flip');
+      if (flippedCards.length === icons.length * 2) {
+        setTimeout(() => {
+          // Zastępujemy grę wiadomością po wygranej
+          gameContainer.innerHTML = `
+            <div style="text-align:center; font-size: 5vw; line-height: 1.4;">
+              🎉 Gratulacje! 🎉<br>
+              Zaloguj się do aplikacji Walley!!<br><br>
+              <strong>Login:</strong> martyna0132002@gmail.com<br>
+              <strong>Hasło:</strong> Michalina.1
+            </div>
+          `;
+        }, 500);
+      }
+    }
 
     createBoard();
   </script>
 
 </body>
 </html>
+
 
 
 
