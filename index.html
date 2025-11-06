@@ -174,17 +174,23 @@
       createBoard();
     }
 
-    function checkWin() {
+   function checkWin() {
       const flippedCards = document.querySelectorAll('.memory-card.flip');
       if (flippedCards.length === icons.length * 2) {
         setTimeout(() => {
           gameContainer.innerHTML = `
             <div style="
-              text-align:center;
-              font-size: 2rem;
-              max-width: 90%;
-              margin: auto;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              width: 100%;
+              height: 100%;
+              font-size: calc(1.5rem + 1vw);
               line-height: 1.4;
+              padding: 10px;
+              box-sizing: border-box;
             ">
               🎉 Gratulacje! 🎉<br>
               Wygrałeś grę memory!<br>
@@ -200,3 +206,4 @@
 
 </body>
 </html>
+
