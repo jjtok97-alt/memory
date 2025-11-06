@@ -173,29 +173,36 @@
     function restartGame() {
       createBoard();
     }
-
+    
 function checkWin() {
   const flippedCards = document.querySelectorAll('.memory-card.flip');
   if (flippedCards.length === icons.length * 2) {
     setTimeout(() => {
       const boardWidth = gameContainer.offsetWidth;
-      const fontSize = Math.min(boardWidth * 0.08, 24); // max 24px
+      const fontSize = Math.min(boardWidth * 0.06, 24); // max 24px, dopasowanie do planszy
       gameContainer.innerHTML = `
-        <div style="text-align: center; max-width: 90%; margin: 20px auto; line-height: 1.3;">
-          <div style="font-size: ${fontSize}px;">🎉 Gratulacje! 🎉</div>
-          <div style="font-size: ${fontSize}px;">Wygrałeś grę memory!</div>
-          <div style="font-size: ${fontSize}px;">🔄 Kliknij "Nowa gra", aby spróbować ponownie.</div>
+        <div style="
+          max-width: 90%;
+          margin: 20px auto;
+          text-align: center;
+          font-size: ${fontSize}px;
+          line-height: 1.3;
+          word-wrap: break-word;
+        ">
+          🎉 Gratulacje! 🎉 Wygrałeś grę memory! 🔄 Kliknij "Nowa gra", aby spróbować ponownie.
         </div>
       `;
     }, 500);
   }
 }
 
+
     createBoard();
   </script>
 
 </body>
 </html>
+
 
 
 
