@@ -23,7 +23,7 @@
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px #000;
       text-align: center;
-      font-size: calc(4vw + 4vh);
+      font-size: 2rem;
     }
 
     .memory-game {
@@ -43,6 +43,7 @@
       transform-style: preserve-3d;
       transition: transform 0.5s;
       cursor: pointer;
+      font-size: 1rem; /* baza dla em w front/back-face */
     }
 
     .memory-card.flip {
@@ -59,7 +60,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: calc(5vw + 5vh); /* dynamiczny rozmiar ikon */
+      font-size: 3em; /* dopasowanie do karty */
+      overflow: hidden;
     }
 
     .front-face {
@@ -71,7 +73,6 @@
 
     .back-face {
       background: #1b5e20;
-      font-size: calc(4vw + 4vh);
       z-index: 1;
       border: 2px solid #fff;
     }
@@ -79,7 +80,7 @@
     button {
       margin-top: 20px;
       padding: 10px 20px;
-      font-size: calc(1vw + 1vh + 10px);
+      font-size: 1rem;
       cursor: pointer;
       border: none;
       border-radius: 5px;
@@ -178,7 +179,13 @@
       if (flippedCards.length === icons.length * 2) {
         setTimeout(() => {
           gameContainer.innerHTML = `
-            <div style="text-align:center; font-size: calc(3vw + 3vh); line-height: 1.4;">
+            <div style="
+              text-align:center;
+              font-size: 2rem;
+              max-width: 90%;
+              margin: auto;
+              line-height: 1.4;
+            ">
               🎉 Gratulacje! 🎉<br>
               Wygrałeś grę memory!<br>
               🔄 Kliknij "Nowa gra", aby spróbować ponownie.
