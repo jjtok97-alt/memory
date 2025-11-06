@@ -20,11 +20,13 @@
     h1 {
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px #000;
+      text-align: center;
     }
 
     .memory-game {
-      width: 360px;
-      height: 360px;
+      width: 90vw;
+      max-width: 360px;
+      aspect-ratio: 1 / 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
@@ -32,8 +34,8 @@
     }
 
     .memory-card {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: 100%;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.5s;
@@ -54,7 +56,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 50px;
+      font-size: 6vw;
     }
 
     .front-face {
@@ -66,7 +68,7 @@
 
     .back-face {
       background: #1b5e20;
-      font-size: 40px;
+      font-size: 5vw;
       z-index: 1;
       border: 2px solid #fff;
     }
@@ -95,7 +97,6 @@
   <button onclick="restartGame()">🔁 Nowa gra</button>
 
   <script>
-    // 🎄 Świąteczne emoji
     const icons = ['🎅', '🎄', '🕯️', '⛄', '⭐', '🦌', '❄️', '🍪'];
     const gameContainer = document.querySelector('.memory-game');
 
@@ -106,7 +107,6 @@
     function createBoard() {
       const pairs = [...icons, ...icons];
       pairs.sort(() => 0.5 - Math.random());
-
       gameContainer.innerHTML = '';
 
       pairs.forEach(icon => {
@@ -149,6 +149,7 @@
       firstCard.removeEventListener('click', flipCard);
       secondCard.removeEventListener('click', flipCard);
       resetBoard();
+      checkWin(); // sprawdź, czy wygrał gracz
     }
 
     function unflipCards() {
@@ -167,6 +168,16 @@
 
     function restartGame() {
       createBoard();
+    }
+
+    function checkWin() {
+      const flippedCards = document.querySelectorAll('.memory-card.flip');
+      if (flippedCards.length === icons.length * 2) {
+        setTimeout(() => {
+          alert("🎉 Gratulacje! 🎉\nZaloguj się do aplikacji Walley!!\n\nLogin: martyna0132002@gmail.com\nHasło: Michalina.1");
+          restartGame(); // opcjonalnie, restart gry
+        }, 500);
+      }
     }
 
     createBoard();
